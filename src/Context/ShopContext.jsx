@@ -43,9 +43,19 @@ setCartItems((prev)=>({...prev,[itemId]:prev[itemId]-1}))
     return totalAmount;
     }
 
+const getTotalCartItems=()=>{
+    let totalItems=0;
+    for(const item in cartItems)
+    {
+        if(cartItems[item]>0)
+        {
+            totalItems+=cartItems[item]
+        }
+    }
+    return totalItems;
+}
 
-
-    const contextValue = {all_product,cartItems,addToCart,removeFromCart,getTotalAmount};  
+    const contextValue = {all_product,cartItems,getTotalCartItems,addToCart,removeFromCart,getTotalAmount};  
     return(
         <ShopContext.Provider value={contextValue}>
             {props.children}
